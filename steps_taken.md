@@ -13,13 +13,13 @@
 
 ### Building the real thing
 
-- [] Converting the prototype into an OOP model
-- [] Initialzation using a file path
-- [] Adding constraints to the key and values
-- [] Adding Time to Live property to the keys
-- [] Making sure that library returns appropriate errors
+- [ ] Converting the prototype into an OOP model
+- [ ] Initialzation using a file path
+- [ ] Adding constraints to the key and values
+- [ ] Adding Time to Live property to the keys
+- [ ] Making sure that library returns appropriate errors
 
 ### Final Touch
-- [] Constraint on database size
-- [] Single access at a time
-- [] Multi-threading support
+- [ ] Constraint on database size
+- [ ] Single access at a time
+- [ ] Multi-threading support
