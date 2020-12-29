@@ -13,8 +13,8 @@
 
 ### Building the real thing
 
-- [ ] Converting the prototype into an OOP model
-- [ ] Initialzation using a file path
+- [x] Converting the prototype into an OOP model
+- [x] Initialzation using a file path
 - [ ] Adding constraints to the key and values
 - [ ] Adding Time to Live property to the keys
 - [ ] Making sure that library returns appropriate errors
