@@ -1,6 +1,6 @@
-from src import nosdb 
+from src import nosdb
 
-obj = nosdb.Database("data.json")
+obj = nosdb.Database()
 
 # creates an entry
 data = "Test Data"
@@ -12,12 +12,12 @@ print(obj.read(key))
 print("\n")
 #
 # reads already created entry
-print(obj.read("name"))
-print("\n")
+#print(obj.read("name"))
+#print("\n")
 #
 # reads already created json object
-print(obj.read("obj"))
-print("\n")
+#print(obj.read("obj"))
+#print("\n")
 #
 # generates read error
 print(obj.read("45"))

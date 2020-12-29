@@ -1,8 +1,22 @@
 import json
+import os
 
 class Database:
-    def __init__(self, filename):
-        self.filename = filename;
+    def __init__(self, *args):
+        if len(args) == 0:
+
+            self.filepath = os.path.join(os.getcwd(), "database")
+            if not os.path.isdir(self.filepath):
+                os.mkdir(self.filepath)
+            self.filepath = os.path.join(self.filepath, 'database.json')
+            open(self.filepath, "a+")
+        else:
+            self.filepath = args[0]
+            self.filepath = os.path.join(self.filepath, 'database.json')
+            if not os.path.isfile(self.filepath):
+                open(self.filepath, "a+")
+
+        #print(self.filepath)
 
 # creates a new entry in the database
     def create(self, key, data):
@@ -12,8 +26,12 @@ class Database:
     #dict[key] = data
         indata = {"%s" % self.key: "%s" % self.data}
         #print(indata)
-        with open(self.filename, "r+") as infile:
-            dict = json.load(infile)
+        with open(self.filepath, "r+") as infile:
+            try:
+                dict = json.load(infile)
+            except ValueError:
+                print("Database empty")
+
             if self.key in dict:
                 print("Create Error: The key entered already exists.")
                 return
@@ -31,22 +49,21 @@ class Database:
     def read(self, key):
         self.key = key
 
-        with open(self.filename, "r") as infile:
+        with open(self.filepath, "r") as infile:
             json_obj = json.load(infile)
         #return dict[key]
     #return json_obj
         if self.key in json_obj:
-            return json_obj[self.key]
+            return [self.key, json_obj[self.key]]
         else:
-            print("Read Error: Specified key does not exists.")
-            return
+            return("Read Error: Specified key does not exists.")
 
 
 # deletes the value corresponding to the key passed
     def delete(self, key):
         self.key = key;
 
-        with open(self.filename, "r+") as infile:
+        with open(self.filepath, "r+") as infile:
             json_obj = json.load(infile)
 
         if self.key in json_obj:
@@ -55,5 +72,5 @@ class Database:
             print("Delete Error: Specified key does not exists.")
             return
 
-        with open(self.filename, "w") as outfile:
+        with open(self.filepath, "w") as outfile:
             json.dump(json_obj, outfile, indent = 4)
