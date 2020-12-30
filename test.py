@@ -4,7 +4,7 @@ obj = nosdb.Database()
 
 # creates an entry
 data = "Test Data"
-key = "a"
+key = "aaaa"
 obj.create(key, data)
 
 # reads the created entry

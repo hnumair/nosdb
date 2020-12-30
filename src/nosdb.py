@@ -2,7 +2,9 @@ import json
 import os
 
 class Database:
+    # Database initialization
     def __init__(self, *args):
+
         if len(args) == 0:
 
             self.filepath = os.path.join(os.getcwd(), "database")
@@ -16,16 +18,57 @@ class Database:
             if not os.path.isfile(self.filepath):
                 open(self.filepath, "a+")
 
-        #print(self.filepath)
 
-# creates a new entry in the database
+    def validInput(self, key, data):
+
+        self.key = key
+        self.data = data
+        # Key size restriction
+        if type(self.key) is str:
+            self.key = self.key[0:32]
+        else:
+            print("Create Error: Only strings are allowed for the key (max: 32)")
+            return False
+
+        # JSON Value restriction
+        try:
+            json.loads(self.data)
+        except ValueError as e:
+            print("Create Error: Enter valid JSON value")
+            return False
+
+        if(sys.getsizeof(self.data) > 16000):
+            print("Create Error: JSON Object too large (max: 16KB)")
+            return False
+
+    # creates a new entry in the database
     def create(self, key, data):
         dict = {}
         self.key = key
         self.data = data
-    #dict[key] = data
+        if not self.validInput(self.key, self.data):
+            return
+
+        # Key size restriction
+        """if type(self.key) is str:
+            self.key = self.key[0:32]
+        else:
+            print("Create Error: Only strings are allowed for the key (max: 32)")
+            return
+
+        # JSON Value restriction
+        try:
+            json.loads(self.data)
+        except ValueError as e:
+            print("Create Error: Enter valid JSON value")
+            return
+
+        if(sys.getsizeof(self.data) > 16000):
+            print("Create Error: JSON Object too large (max: 16KB)")
+            return
+            """
+
         indata = {"%s" % self.key: "%s" % self.data}
-        #print(indata)
         with open(self.filepath, "r+") as infile:
             try:
                 dict = json.load(infile)
