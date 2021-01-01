@@ -1,23 +1,23 @@
 from src import nosdb
 
+
+"""
+methods supported:
+    create(key, data)
+    read(key)
+    delete(key)
+"""
+
 obj = nosdb.Database()
 
 # creates an entry
-data = "Test Data"
-key = "aaaa"
+data = '{"test": "data"}'
+key = "abcd"
 obj.create(key, data)
 
 # reads the created entry
 print(obj.read(key))
 print("\n")
-#
-# reads already created entry
-#print(obj.read("name"))
-#print("\n")
-#
-# reads already created json object
-#print(obj.read("obj"))
-#print("\n")
 #
 # generates read error
 print(obj.read("45"))

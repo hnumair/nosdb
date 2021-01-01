@@ -15,11 +15,11 @@
 
 - [x] Converting the prototype into an OOP model
 - [x] Initialzation using a file path
-- [ ] Adding constraints to the key and values
+- [x] Adding constraints to the key and values
 - [ ] Adding Time to Live property to the keys
-- [ ] Making sure that library returns appropriate errors
+- [x] Making sure that library returns appropriate errors
 
-### Final Touch
-- [ ] Constraint on database size
+### ~~Final Touch~~ Non Functional Requirements  
+- [x] Constraint on database size
 - [ ] Single access at a time
 - [ ] Multi-threading support

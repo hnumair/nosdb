@@ -12,3 +12,5 @@ object_name = nosdb.Database("filename")
 ```
 
 Now, predefined methods can be used for interacting with the database.
+
+Refer test.py for more details.
